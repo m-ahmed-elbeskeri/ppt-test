@@ -1,0 +1,8 @@
+# ppteval — OPT-IN heavy converters (still free/OSS, but large deps e.g. PyTorch).
+# Install on top of the light set:  pip install -r requirements-heavy.txt
+#   docling          MIT          (pulls model/runtime deps)
+#   unstructured     Apache-2.0   (open-source core; .ppt needs LibreOffice, .pptx does not)
+#   marker-pdf       GPL          (downloads PyTorch + models on first run — slow)
+docling
+unstructured[pptx]
+marker-pdf

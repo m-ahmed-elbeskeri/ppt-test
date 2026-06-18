@@ -1,0 +1,17 @@
+# virtualenv
+.venv/
+venv/
+
+# generated eval artifacts
+out/
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# tika server jar/logs auto-downloaded at runtime
+tika*.jar
+tika*.log

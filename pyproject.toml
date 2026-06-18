@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ppteval"
+version = "0.1.0"
+description = "Free/OSS eval suite to rank PowerPoint (.pptx) -> LLM-ready format converters"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    # --- eval framework core ---
+    "pydantic>=2",
+    "tiktoken>=0.7",
+    "pandas>=2",
+    "pillow>=10",
+    "textual>=0.80",         # MIT — interactive TUI
+    # --- converters: light / always-on (all free & OSS) ---
+    "markitdown>=0.1",       # MIT
+    "python-pptx>=1.0",      # MIT  (also powers ground-truth + custom adapter)
+    "pptx2md",               # MIT
+    "PyMuPDF>=1.24",         # AGPL/commercial dual
+    "pymupdf4llm>=0.0.17",   # AGPL
+    "tika>=2.6",             # Apache-2.0 (needs a JRE on PATH)
+    # --- Windows-only: slide rendering via PowerPoint COM ---
+    "pywin32>=306 ; platform_system == 'Windows'",
+]
+
+[project.optional-dependencies]
+# Opt-in heavy converters (still free/OSS, but pull large deps e.g. torch).
+# Install with:  pip install -e .[heavy]
+heavy = [
+    "docling",               # MIT
+    "unstructured[pptx]",    # Apache-2.0 (open-source core)
+    "marker-pdf",            # GPL — see README license table
+]
+dev = ["pytest>=7"]
+
+[project.scripts]
+ppteval = "ppteval.cli:main"
+ppteval-tui = "ppteval.tui:run"
+
+[tool.setuptools.packages.find]
+include = ["ppteval*"]

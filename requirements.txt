@@ -1,0 +1,20 @@
+# ppteval — light/default dependency set (all free & open-source).
+# Canonical source of truth is pyproject.toml; this mirrors the light set for
+# `pip install -r requirements.txt` users. For the package + console script:
+#     pip install -e .
+#
+# eval framework core
+pydantic>=2
+tiktoken>=0.7
+pandas>=2
+pillow>=10
+textual>=0.80
+# converters (light, always-on)
+markitdown>=0.1
+python-pptx>=1.0
+pptx2md
+PyMuPDF>=1.24
+pymupdf4llm>=0.0.17
+tika>=2.6
+# Windows slide rendering via PowerPoint COM
+pywin32>=306 ; platform_system == "Windows"
